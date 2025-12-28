@@ -1,2 +1,19 @@
-/.vagrant
+# Vagrant
+.vagrant/
+*.log
 ubuntu-jammy-22.04-cloudimg-console.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local environment files
+.env
+.env.local
