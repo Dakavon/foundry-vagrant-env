@@ -26,8 +26,7 @@ npm install -g ganache@latest
 npm install -g nodemon@latest
 
 # Install Foundry
-su - vagrant -c "curl -L https://foundry.paradigm.xyz | bash"
-su - vagrant -c "source ~/.bashrc && foundryup"
+su - vagrant -c "curl -L https://foundry.paradigm.xyz | bash && export PATH=\"/home/vagrant/.foundry/bin:\$PATH\" && foundryup"
 
 # Change hostname in /etc/hosts & /etc/hostname to "devVM"
 oldHostname=$(cat /etc/hostname)
