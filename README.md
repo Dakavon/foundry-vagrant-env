@@ -1,10 +1,21 @@
 # VM for Ethereum smart contract development
 
-on the basis of Ubuntu 22.04 LTS ("Jammy Jellyfish") with pre-installed software e.g. **Foundry** ~+ Hardhat~ (\*) to get started straight away.
+on the basis of Ubuntu 22.04 LTS ("Jammy Jellyfish") with pre-installed software e.g. **Foundry** and **Python** ~+ Hardhat~ (\*) to get started straight away.
 
 (\* Hardhat needs a local installation within a project.)
 
 See [bootstrap.sh](bootstrap.sh) for software versions.
+
+## Installed Software
+
+- **Foundry** - Smart contract development framework (forge, cast, anvil, chisel)
+- **Node.js 20.x LTS** - JavaScript runtime
+- **Python 3** with pip and venv
+- **Git** - Version control
+- **Ganache** - Local Ethereum blockchain
+- **Screen** - Terminal multiplexer
+- **Vim** - Text editor
+- Additional tools: jq, build-essential, nodemon
 
 ## Get started
 
@@ -16,8 +27,10 @@ See [bootstrap.sh](bootstrap.sh) for software versions.
 
 :arrow_right: https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html (or https://download.virtualbox.org/virtualbox)
 
-        $ sudo dpkg -i virtualbox-_VERSION_~Ubuntu~_PLATFORM.deb
-        $ sudo apt-get install --fix-broken install
+```sh
+$ sudo dpkg -i virtualbox-_VERSION_~Ubuntu~_PLATFORM.deb
+$ sudo apt-get install --fix-broken
+```
 
 ### Prepare development environment
 
@@ -43,7 +56,7 @@ See [bootstrap.sh](bootstrap.sh) for software versions.
 
 ### Run development environment
 
-1. If you haven't already create a DAPPS folder within your users home folder, e.g. vua terminal
+1. If you haven't already create a DAPPS folder within your users home folder, e.g. via terminal
 
    ```sh
    $ mkdir ~/DAPPS
@@ -57,7 +70,7 @@ See [bootstrap.sh](bootstrap.sh) for software versions.
    $ vagrant up && vagrant ssh
    ```
 
-4. Go to ~DAPPS folder inside the VM
+4. Go to ~/DAPPS folder inside the VM
 
    ```sh
    vagrant@devVM:~$  cd ~/DAPPS/
@@ -79,7 +92,7 @@ See [bootstrap.sh](bootstrap.sh) for software versions.
    
    - install dependencies via
       ```sh
-      vagrant@devVM:~/DAPPS$  npm install
+      vagrant@devVM:~/DAPPS/_PROJECT_$  npm install
       ```
    
    - or use hardhat within project through local installation
@@ -94,12 +107,39 @@ See [bootstrap.sh](bootstrap.sh) for software versions.
    ```
 
    ```sh
-   vagrant@devVM:~/DAPPS/_PROJECT_$  forge init _PROJECT_NAME_
+   vagrant@devVM:~/DAPPS/_PROJECT_$  forge init .
    ```
 
    In case `forge` is not available, try
    ```sh
    vagrant@devVM:~/DAPPS/_PROJECT_$  foundryup
+   ```
+
+### Python Development
+
+1. Create a Python virtual environment for your project
+
+   ```sh
+   vagrant@devVM:~/DAPPS$  mkdir _PROJECT_ && cd _PROJECT_
+   vagrant@devVM:~/DAPPS/_PROJECT_$  python3 -m venv venv
+   ```
+
+2. Activate the virtual environment
+
+   ```sh
+   vagrant@devVM:~/DAPPS/_PROJECT_$  source venv/bin/activate
+   ```
+
+3. Install Python packages
+
+   ```sh
+   (venv) vagrant@devVM:~/DAPPS/_PROJECT_$  pip install <package-name>
+   ```
+
+4. Deactivate when done
+
+   ```sh
+   (venv) vagrant@devVM:~/DAPPS/_PROJECT_$  deactivate
    ```
 
 ### Delete development environment
